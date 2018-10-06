@@ -4,7 +4,7 @@
     <title>Monitor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
-    <link rel="icon" type="image/png" href="monitor.png" />
+    <link rel="icon" type="image/png" href="http://monitorit4.me/monitor.png" />
     <style>
       html, body, div, span, applet, object, iframe,
       h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -91,12 +91,23 @@
         text-align: center;
       }
     </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   </head>
   <body>
     <div id="container">
-      <h1><img src="./favicon.png" alt="Wino is getting swapped" title="Wino is getting swapped"><img src="./swap.png"><img src="./monitor.png" src="In Monitor" title="In Monitor"></h1><br>
-      <h1>Welcome to Monitor</h1><br><h2>Monitor will swap Wino at a ratio of 100:1<br>New website is coming soon.<br><br></h2>
-      <a href="https://github.com/StakeAddict/Wino" target="_blank"><img src="https://i.imgur.com/6CGfJBH.png" alt="Wallets" title="Wallets"></a> <a href="https://discord.gg/jegqhya" target="_blank"><img alt="Discord Invite" title="Discord Invite" src="./discord-logo.png" class="dlogo"></img></a> <a href="http://explorer.monitorit4.me/" target="_blank"><img alt="Explorer" title="Explorer" src="./explorer.png"></a>
+      <h1><img src="http://monitorit4.me/favicon.png" alt="Wino is getting swapped" title="Wino is getting swapped"><img src="http://monitorit4.me/swap.png"><img src="http://monitorit4.me/monitor.png" src="In Monitor" title="In Monitor"></h1><br>
+      <h1>Welcome to Monitor</h1><br><h2>Monitor will swap Wino at a ratio of 100:1<br>New website is coming soon.<br><h2 id="swapprice"></h2><br></h2>
+      <a href="https://github.com/StakeAddict/Wino" target="_blank"><img src="http://monitorit4.me/wallet.png" alt="Wallets" title="Wallets"></a> <a href="https://discord.gg/jegqhya" target="_blank"><img alt="Discord Invite" title="Discord Invite" src="http://monitorit4.me/discord-logo.png" class="dlogo"></img></a> <a href="http://explorer.monitorit4.me/" target="_blank"><img alt="Explorer" title="Explorer" src="http://monitorit4.me/explorer.png"></a>
     </div>
+    <script>
+(function() {
+  var flickerAPI = "https://graviex.net/api/v2/tickers/winobtc.json";
+  $.getJSON( flickerAPI)
+    .done(function( data ) {
+      document.getElementById('swapprice').innerHTML = 'Approximate cost for MN after swap: ' + (data.ticker.sell * 100) * 10000 + ' BTC'
+    });
+})();
+</script>
   </body>
 </html>
+

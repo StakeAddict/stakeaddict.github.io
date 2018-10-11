@@ -104,7 +104,7 @@
   var flickerAPI = "https://graviex.net/api/v2/tickers/winobtc.json";
   $.getJSON( flickerAPI)
     .done(function( data ) {
-      document.getElementById('swapprice').innerHTML = 'Approximate cost for MN after swap: ' + (data.ticker.sell * 100) * 10000 + ' BTC'
+      document.getElementById('swapprice').innerHTML = 'Approximate cost for MN after swap: ' + parseFloat((data.ticker.sell * 100) * 10000).toFixed(8) + ' BTC'
     });
 })();
 </script>

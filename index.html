@@ -4,7 +4,7 @@
     <title>Monitor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"/>
-    <link rel="icon" type="image/png" href="./monitor.png" />
+    <link rel="icon" type="image/png" href="./beacon.png" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <style>
       html, body, div, span, applet, object, iframe,
@@ -61,7 +61,7 @@
         content:"";
         display: block;
         height: 100%;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -88,21 +88,46 @@
       }
       #container {
         max-width: 50%;
-        margin-top: 20em;
+        margin-top: 10vh;
         text-align: center;
+        padding-bottom: 1em;
       }
       i.black-color{
         color: black;
         padding-right: .3em;
         padding-left: .3em;
       }
+      table {
+        display: block;
+        text-align: center;
+        padding: 1em;
+        margin-top: 1em;
+        background: #fff;
+      }
+
+      tbody {
+        width: 100%;
+        display: block;
+      }
+      tr:first-child {
+        border-bottom: 2px solid #000;
+      }
+      tr {
+        margin: .5em;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid #000;
+      }
+      th, td {
+        padding: .5em;
+      }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   </head>
   <body>
     <div id="container">
-      <h1><img src="./favicon.png" alt="Wino is getting swapped" title="Wino is getting swapped"><i class="fas fa-exchange-alt fa-3x black-color"></i><img src="./monitor.png" src="In Monitor" title="In Monitor"></h1><br>
-      <h1>Welcome to Monitor</h1><br><h2>Monitor will swap Wino at a ratio of 100:1<br>New website is coming soon.<br><h2 id="swapprice"></h2><br></h2>
+      <h1><img src="./favicon.png" alt="Wino is getting swapped" title="Wino is getting swapped"><i class="fas fa-exchange-alt fa-3x black-color"></i><img src="./beacon.png" src="In Monitor" title="In Monitor"></h1><br>
+      <h1>Welcome to Wino Swap</h1><br><h2>Beacon will swap Wino at a ratio of 2000:1<br>New website is coming soon.<br><h2 id="swapprice"></h2><br></h2>
       <a href="https://github.com/StakeAddict/Wino" target="_blank"><i class="fas fa-wallet fa-4x black-color"></i></a> <a href="https://discord.gg/jegqhya" target="_blank"><i class="fab fa-discord fa-4x black-color"></i></a> <a href="https://explorer.monitorit4.me/" target="_blank"><i class="fas fa-search fa-4x black-color"></i></a>
     </div>
     <script>
@@ -110,7 +135,7 @@
   var flickerAPI = "https://graviex.net/api/v2/tickers/winobtc.json";
   $.getJSON( flickerAPI)
     .done(function( data ) {
-      document.getElementById('swapprice').innerHTML = 'Approximate cost for MN after swap: ' + parseFloat((data.ticker.sell * 100) * 10000).toFixed(8) + ' BTC'
+      document.getElementById('swapprice').innerHTML = 'Approximate cost for MN after swap: ' + parseFloat((data.ticker.sell * 2000) * 10000).toFixed(8) + ' BTC'
     });
 })();
 </script>
